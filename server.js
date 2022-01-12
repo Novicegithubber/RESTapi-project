@@ -30,20 +30,13 @@ app.post("/users", (req, res) => {
 });
 
 app.put("/users/:id", (req, res) => {
-  User.findOneAndUpdate(
-    { _id: "61dea32356777c64844e7d13" },
-    { name: "ahmed" },
-    function (err, user) {
-      res.send(user);
-    }
-  );
+  User.findOneAndUpdate({ _id: req.params.id }, req.body, function (err, user) {
+    res.send(user);
+  });
 });
 
 app.delete("/users/:id", (req, res) => {
-  User.findByIdAndRemove(
-    { _id: "61dea32356777c64844e7d13" },
-    function (err, user) {
-      res.send(user);
-    }
-  );
+  User.findByIdAndRemove({ _id: req.params.id }, function (err, user) {
+    res.send(user);
+  });
 });
